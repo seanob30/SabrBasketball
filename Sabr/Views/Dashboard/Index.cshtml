@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>MY TEAM</h1>
+                    </div>
+                    <div class="panel-footer">
+                        <button onclick="location.href='@Url.Action("MyTeam","Dashboard")'"class="btn btn-lg">VIEW MY TEAM</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>THE LEAGUE</h1>
+                    </div>
+                    <div class="panel-footer">
+                        <button onclick="location.href='@Url.Action("League","Dashboard")'"class="btn btn-lg">VIEW LEAGUE INFO</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>HISTORICAL</h1>
+                    </div>
+                    <div class="panel-footer">
+                        <button onclick="location.href='@Url.Action("Historical","Dashboard")'"class="btn btn-lg">VIEW HISTORICAL DATA</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
