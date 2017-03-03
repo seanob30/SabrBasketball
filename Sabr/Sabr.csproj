@@ -202,17 +202,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703011820451_InitialMigration.cs" />
-    <Compile Include="Migrations\201703011820451_InitialMigration.Designer.cs">
-      <DependentUpon>201703011820451_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703012057372_AddedPositions&amp;ForeignKeyForPlayersToPositions.cs" />
-    <Compile Include="Migrations\201703012057372_AddedPositions&amp;ForeignKeyForPlayersToPositions.Designer.cs">
-      <DependentUpon>201703012057372_AddedPositions&amp;ForeignKeyForPlayersToPositions.cs</DependentUpon>
+    <Compile Include="Migrations\201703022128255_InitialMigration.cs" />
+    <Compile Include="Migrations\201703022128255_InitialMigration.Designer.cs">
+      <DependentUpon>201703022128255_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\HistoricalPlayer.cs" />
+    <Compile Include="Models\HistoricalTeam.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerPosition.cs" />
+    <Compile Include="Models\Season.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -298,11 +297,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703011820451_InitialMigration.resx">
-      <DependentUpon>201703011820451_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703012057372_AddedPositions&amp;ForeignKeyForPlayersToPositions.resx">
-      <DependentUpon>201703012057372_AddedPositions&amp;ForeignKeyForPlayersToPositions.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703022128255_InitialMigration.resx">
+      <DependentUpon>201703022128255_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

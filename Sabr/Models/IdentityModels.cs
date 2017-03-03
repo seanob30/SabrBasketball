@@ -21,13 +21,16 @@ namespace Sabr.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
+    }   
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<PlayerPosition> PlayerPositions { get; set; }
+        public DbSet<HistoricalPlayer> HistoricalPlayers { get; set; }
+        public DbSet<HistoricalTeam> HistoricalTeams { get; set; }
+        public DbSet<Season> Seasons { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
