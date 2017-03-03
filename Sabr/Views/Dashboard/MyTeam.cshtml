@@ -1,8 +1,34 @@
-﻿
+﻿@model Sabr.ViewModels.DashboardViewModels.MyTeamViewModel
 @{
     ViewBag.Title = "MyTeam";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MyTeam</h2>
+<h2>@Model.Team.TeamName</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.Players)
+        {
+            if (player.TeamId == Model.CurrentUser.TeamId)
+            {
+                <tr>
+                    <td>@player.FirstName @player.LastName</td>
+                    <td>@player.PlayerPositionId</td>
+                    <td>@player.Age</td>
+                    <td>@player.FootHeight'@player.InchHeight"</td>
+                    <td>@player.Weight</td>
+                </tr>
+            }
 
+        }
+    </tbody>
+</table>
