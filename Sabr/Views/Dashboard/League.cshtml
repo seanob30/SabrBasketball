@@ -1,8 +1,23 @@
-﻿
+﻿@model Sabr.ViewModels.DashboardViewModels.LeagueViewModel
 @{
     ViewBag.Title = "League";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>League</h2>
+<h2>The League</h2>
 
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Team</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.TeamsList)
+        {
+            <tr>
+                <td>@Html.ActionLink(team.TeamName, "TeamBio", "Dashboard", new { id = team.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -46,9 +46,39 @@ namespace Sabr.Controllers
 
         public ActionResult League()
         {
-            return View();
+            var currentUserName = User.Identity.GetUserName();
+            var user = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userTeam = _context.Teams.FirstOrDefault(m => m.Id == user.TeamId);
+            var allTeams = _context.Teams.ToList();
+            List<Team> filteredTeams = new List<Team>();
+
+            foreach (var t in allTeams)
+            {
+                if (t.Id != userTeam.Id && t.Id != 31)
+                {
+                    filteredTeams.Add(t);
+                }
+            }
+
+            var viewModel = new DashboardViewModels.LeagueViewModel
+            {
+                TeamsList = filteredTeams
+            };
+
+            return View(viewModel);
         }
 
+        public ActionResult TeamBio(int id)
+        {
+            var team = _context.Teams.FirstOrDefault(m => m.Id == id);
+            var players = _context.Players.ToList();
+            var viewModel = new DashboardViewModels.TeamBioViewModel
+            {
+                Team = team,
+                PlayersList = players
+            };
+            return View(viewModel);
+        }
         public ActionResult Historical()
         {
             var teams = _context.HistoricalTeams.ToList();

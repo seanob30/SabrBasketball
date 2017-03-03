@@ -25,5 +25,16 @@ namespace Sabr.ViewModels
             public HistoricalTeam HistoricalTeam { get; set; }
             public IEnumerable<HistoricalPlayer> HistoricalPlayersList { get; set; }
         }
+
+        public class LeagueViewModel
+        {
+            public IEnumerable<Team> TeamsList { get; set; }
+        }
+
+        public class TeamBioViewModel
+        {
+            public Team Team { get; set; }
+            public IEnumerable<Player> PlayersList { get; set; }
+        }
     }
 }

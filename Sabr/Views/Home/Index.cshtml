@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <br/><br/><br/><br/><br/>
 <div class="jumbotron text-center" style="min-height: 350px">
     <h1>Sabr Basketball</h1>
@@ -115,7 +115,7 @@
 </footer>
 <script>
     $(document).ready(function() {
-        $(".navbar a, footer a[href='#home']").on('click',
+        $(".navbar a, footer a[href='#myPage']").on('click',
             function(event) {
                 if (this.hash !== "") {
                     event.preventDefault();
