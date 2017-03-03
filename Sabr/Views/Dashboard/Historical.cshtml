@@ -1,8 +1,25 @@
-﻿
+﻿@model Sabr.ViewModels.DashboardViewModels.HistoricalViewModel
 @{
     ViewBag.Title = "Historical";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Historical</h2>
+<h2>Historical Champions</h2>
 
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Team</th>
+            <th>Season</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.HistoricalTeamsList)
+        {
+            <tr>
+                <td>@Html.ActionLink(team.TeamName, "HistoricalBio", "Dashboard", new { id = team.Id }, null)</td>
+                <td>@team.SeasonId</td>
+            </tr>
+        }
+    </tbody>
+</table>

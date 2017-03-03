@@ -39,7 +39,7 @@ namespace Sabr.Controllers
             {
                 CurrentUser = user,
                 Team = userTeam,
-                Players = allPlayers
+                PlayersList = allPlayers
             };
             return View(viewModel);
         }
@@ -51,7 +51,25 @@ namespace Sabr.Controllers
 
         public ActionResult Historical()
         {
-            return View();
+            var teams = _context.HistoricalTeams.ToList();
+
+            var viewModel = new DashboardViewModels.HistoricalViewModel
+            {
+                HistoricalTeamsList = teams
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult HistoricalBio(int id)
+        {
+            var team = _context.HistoricalTeams.FirstOrDefault(m => m.Id == id);
+            var players = _context.HistoricalPlayers.ToList();
+            var viewModel = new DashboardViewModels.HistoricalBioViewModel
+            {
+                HistoricalTeam = team,
+                HistoricalPlayersList = players
+            };
+            return View(viewModel);
         }
     }
 }

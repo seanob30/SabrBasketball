@@ -12,7 +12,18 @@ namespace Sabr.ViewModels
         {
             public ApplicationUser CurrentUser { get; set; }
             public Team Team { get; set; }
-            public IEnumerable<Player> Players { get; set; }    
+            public IEnumerable<Player> PlayersList { get; set; }    
+        }
+
+        public class HistoricalViewModel
+        {
+            public IEnumerable<HistoricalTeam> HistoricalTeamsList { get; set; }
+        }
+
+        public class HistoricalBioViewModel
+        {
+            public HistoricalTeam HistoricalTeam { get; set; }
+            public IEnumerable<HistoricalPlayer> HistoricalPlayersList { get; set; }
         }
     }
 }

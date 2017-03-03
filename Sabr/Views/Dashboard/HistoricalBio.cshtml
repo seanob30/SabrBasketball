@@ -1,10 +1,10 @@
-﻿@model Sabr.ViewModels.DashboardViewModels.MyTeamViewModel
+﻿@model Sabr.ViewModels.DashboardViewModels.HistoricalBioViewModel
 @{
-    ViewBag.Title = "MyTeam";
+    ViewBag.Title = "HistoricalBio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Team.TeamName</h2>
+<h2>@Model.HistoricalTeam.TeamName</h2>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -16,9 +16,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var player in Model.PlayersList)
+        @foreach (var player in Model.HistoricalPlayersList)
         {
-            if (player.TeamId == Model.CurrentUser.TeamId)
+            if (player.HistoricalTeamId == Model.HistoricalTeam.Id)
             {
                 <tr>
                     <td>@player.FirstName @player.LastName</td>
@@ -32,3 +32,4 @@
         }
     </tbody>
 </table>
+

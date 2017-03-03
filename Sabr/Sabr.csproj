@@ -285,6 +285,7 @@
     <Content Include="Views\Dashboard\MyTeam.cshtml" />
     <Content Include="Views\Dashboard\League.cshtml" />
     <Content Include="Views\Dashboard\Historical.cshtml" />
+    <Content Include="Views\Dashboard\HistoricalBio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
