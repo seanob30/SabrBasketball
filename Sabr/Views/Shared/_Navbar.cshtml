@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && User.Identity.GetUserName() == "admin")
 {
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -12,10 +12,40 @@
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")">SABR</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("Index", "Dashboard")">ACCOUNT</a></li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a></li>
-                </ul>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Index", "Upload")">UPLOAD</a></li>
+                        <li><a href="@Url.Action("Index", "Dashboard")">ACCOUNT</a></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a></li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </nav>
+}
+else if (Request.IsAuthenticated)
+{
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">SABR</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Index", "Dashboard")">ACCOUNT</a></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a></li>
+                    </ul>
+                }
             </div>
         </div>
     </nav>
@@ -37,7 +67,7 @@ else
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#services">SERVICES</a></li>
                     <li><a href="#contact">CONTACT</a></li>
-                    <li><a href="@Url.Action("Login", "Account")">LOG IN</a></li>
+                    <li>@Html.ActionLink("LOG IN", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                 </ul>
             </div>
         </div>
