@@ -21,7 +21,7 @@
             if (player.TeamId == Model.Team.Id)
             {
                 <tr>
-                    <td>@player.FirstName @player.LastName</td>
+                    <td>@Html.ActionLink((player.FirstName + " " + player.LastName), "PlayerBio", "Dashboard", new { name = (player.FirstName + " " + player.LastName) }, null)</td>
                     <td>@player.PlayerPositionId</td>
                     <td>@player.Age</td>
                     <td>@player.FootHeight'@player.InchHeight"</td>

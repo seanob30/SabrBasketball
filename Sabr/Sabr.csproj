@@ -308,6 +308,9 @@
     <Content Include="Views\Dashboard\TeamBio.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
     <Content Include="Views\Upload\Success.cshtml" />
+    <Content Include="Views\Dashboard\PlayerBio.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlayerBio.cshtml" />
+    <Content Include="Views\Shared\_NavbarPlayerBio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

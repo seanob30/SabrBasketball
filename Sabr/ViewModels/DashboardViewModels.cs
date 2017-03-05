@@ -36,5 +36,14 @@ namespace Sabr.ViewModels
             public Team Team { get; set; }
             public IEnumerable<Player> PlayersList { get; set; }
         }
+
+        public class PlayerBioViewModel
+        {
+            public PerGameStatLine PlayerStats { get; set; }
+            public decimal FGPercentage { get; set; }    
+            public decimal ThreePercentage { get; set; }    
+            public decimal FTPercentage { get; set; }    
+
+        }
     }
 }

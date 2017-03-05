@@ -79,6 +79,22 @@ namespace Sabr.Controllers
             };
             return View(viewModel);
         }
+
+        public ActionResult PlayerBio(string name)
+        {
+            var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(name));
+            var viewModel = new DashboardViewModels.PlayerBioViewModel
+            {
+                PlayerStats = playerStat,
+                FGPercentage = decimal.Parse(playerStat.FieldGoalPercentage) * 100,
+                ThreePercentage = decimal.Parse(playerStat.ThreePointPercentage) * 100,
+                FTPercentage = decimal.Parse(playerStat.FreeThrowPercentage) * 100
+            };
+            viewModel.FGPercentage = Decimal.Round(viewModel.FGPercentage, 1);
+            viewModel.ThreePercentage = Decimal.Round(viewModel.ThreePercentage, 1);
+            viewModel.FTPercentage = Decimal.Round(viewModel.FTPercentage, 1);
+            return View(viewModel);
+        }
         public ActionResult Historical()
         {
             var teams = _context.HistoricalTeams.ToList();
