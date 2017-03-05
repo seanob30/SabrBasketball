@@ -1,3 +1,12 @@
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Web;
+using System.Web.Hosting;
+using System.Web.UI.WebControls;
+using CsvHelper;
+using Sabr.Models;
+
 namespace Sabr.Migrations
 {
     using System;
@@ -11,7 +20,7 @@ namespace Sabr.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
-
+        
         protected override void Seed(Sabr.Models.ApplicationDbContext context)
         {
             context.Teams.AddOrUpdate(m => m.Id,
@@ -244,6 +253,8 @@ namespace Sabr.Migrations
                  new Models.HistoricalPlayer { Id = 59, FirstName = "Jarvis", LastName = "Varnado", FootHeight = 6, InchHeight = 9, Weight = 230, Age = 25, PlayerPositionId = 4, HistoricalTeamId =  4 },
                  new Models.HistoricalPlayer { Id = 60, FirstName = "Dwyane", LastName = "Wade", FootHeight = 6, InchHeight = 4, Weight = 220, Age = 31, PlayerPositionId = 2, HistoricalTeamId =  4 }
                 );
+
+           
 
         }
     }

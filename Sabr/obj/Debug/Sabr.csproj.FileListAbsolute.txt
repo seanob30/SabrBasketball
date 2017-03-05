@@ -82,3 +82,8 @@ C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.dll
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.pdb
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.InitialMigration.resources
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.csproj.GenerateResource.Cache
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.AddedStatLineModel.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\bin\CsvHelper.dll
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\bin\CsvHelper.xml
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.PopulateStatLineTable.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ChangedPropDataOnStatLines.resources

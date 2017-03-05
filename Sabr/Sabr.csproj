@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -207,9 +211,22 @@
     <Compile Include="Migrations\201703022128255_InitialMigration.Designer.cs">
       <DependentUpon>201703022128255_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703050744431_AddedStatLineModel.cs" />
+    <Compile Include="Migrations\201703050744431_AddedStatLineModel.Designer.cs">
+      <DependentUpon>201703050744431_AddedStatLineModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703050746486_PopulateStatLineTable.cs" />
+    <Compile Include="Migrations\201703050746486_PopulateStatLineTable.Designer.cs">
+      <DependentUpon>201703050746486_PopulateStatLineTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703050923179_ChangedPropDataOnStatLines.cs" />
+    <Compile Include="Migrations\201703050923179_ChangedPropDataOnStatLines.Designer.cs">
+      <DependentUpon>201703050923179_ChangedPropDataOnStatLines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistoricalPlayer.cs" />
     <Compile Include="Models\HistoricalTeam.cs" />
+    <Compile Include="Models\PerGameStatLine.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerPosition.cs" />
     <Compile Include="Models\Season.cs" />
@@ -290,6 +307,7 @@
     <Content Include="Views\Dashboard\HistoricalBio.cshtml" />
     <Content Include="Views\Dashboard\TeamBio.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
+    <Content Include="Views\Upload\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +323,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703022128255_InitialMigration.resx">
       <DependentUpon>201703022128255_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703050744431_AddedStatLineModel.resx">
+      <DependentUpon>201703050744431_AddedStatLineModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703050746486_PopulateStatLineTable.resx">
+      <DependentUpon>201703050746486_PopulateStatLineTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703050923179_ChangedPropDataOnStatLines.resx">
+      <DependentUpon>201703050923179_ChangedPropDataOnStatLines.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
