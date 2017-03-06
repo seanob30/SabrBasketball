@@ -42,7 +42,8 @@ namespace Sabr.ViewModels
             public PerGameStatLine PlayerStats { get; set; }
             public decimal FGPercentage { get; set; }    
             public decimal ThreePercentage { get; set; }    
-            public decimal FTPercentage { get; set; }    
+            public decimal FTPercentage { get; set; }
+            public int SabrMetric { get; set; }   
 
         }
 
@@ -52,6 +53,7 @@ namespace Sabr.ViewModels
             public decimal FGPercentage { get; set; }
             public decimal ThreePercentage { get; set; }
             public decimal FTPercentage { get; set; }
+            public int SabrMetric { get; set; }
 
         }
     }

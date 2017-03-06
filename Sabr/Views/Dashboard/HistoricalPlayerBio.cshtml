@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
 }
 
-<h2>@Model.PlayerStats.Player.Split('\\')[0]</h2>
+<h2>@Model.PlayerStats.Player.Split('\\')[0] @Model.SabrMetric</h2>
 <li>@Model.PlayerStats.Points ppg</li>
 <li>@Model.PlayerStats.Assists apg</li>
 <li>@Model.PlayerStats.TotalRebounds rpg</li>
