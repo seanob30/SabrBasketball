@@ -65,5 +65,15 @@ namespace Sabr.ViewModels
         {
             public IEnumerable<PlayerAndSabrScore> ReplacementsList { get; set; }
         }
+
+        public class UndervaluedViewModel
+        {
+            public IEnumerable<PlayerAndSabrScore> UndervaluedPlayersList { get; set; }
+        }
+
+        public class PowerRankingsViewModel
+        {
+            public IEnumerable<TeamAndSabrScore> TeamAndSabrScoresList { get; set; }
+        }
     }
 }

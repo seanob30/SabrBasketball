@@ -1,0 +1,27 @@
+﻿@model Sabr.ViewModels.DashboardViewModels.PowerRankingsViewModel
+@{
+    ViewBag.Title = "PowerRankings";
+    Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
+}
+
+<h2>Power Rankings</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SabrMetric</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var score in Model.TeamAndSabrScoresList)
+        {
+            <tr>
+                <td>@Html.ActionLink(score.Team.TeamName, "TeamBio", "Dashboard", new { id = score.Team.Id }, null)</td>
+                <td>@score.SabrScore</td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>

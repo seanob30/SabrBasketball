@@ -261,6 +261,7 @@
     <Compile Include="Models\PlayerPosition.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamAndSabrScore.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\DashboardViewModels.cs" />
@@ -345,6 +346,8 @@
     <Content Include="Views\Dashboard\HistoricalPlayerBio.cshtml" />
     <Content Include="Views\Dashboard\AnalyzeMyTeam.cshtml" />
     <Content Include="Views\Dashboard\FindReplacement.cshtml" />
+    <Content Include="Views\Dashboard\UndervaluedPlayers.cshtml" />
+    <Content Include="Views\Dashboard\PowerRankings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

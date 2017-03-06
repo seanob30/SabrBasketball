@@ -1,0 +1,30 @@
+﻿@model Sabr.ViewModels.DashboardViewModels.UndervaluedViewModel
+@{
+    ViewBag.Title = "UndervaluedPlayers";
+    Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
+}
+
+<h2>Undervalued Players</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SabrMetric</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.UndervaluedPlayersList)
+        {
+            <tr>
+                <td>@Html.ActionLink(player.PlayerName, "PlayerBio", "Dashboard", new { name = player.PlayerName, position = player.PositionId }, null)</td>
+                <td>@player.SabrScore</td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+
+
+

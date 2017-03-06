@@ -49,7 +49,7 @@
                             {
                                 <tr>
                                     <td>@Html.ActionLink((player.FirstName + " " + player.LastName), "PlayerBio", "Dashboard", new { name = (player.FirstName + " " + player.LastName), position = player.PlayerPositionId }, null)</td>
-                                    <td>@player.PlayerPositionId</td>
+                                    <td>@player.PlayerPosition.Position</td>
                                     <td>@player.Age</td>
                                     <td>@player.FootHeight'@player.InchHeight"</td>
                                     <td>@player.Weight</td>

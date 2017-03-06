@@ -36,6 +36,11 @@ namespace Sabr.Controllers
             var allPlayers = _context.Players.ToList();
             var user = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
             var userTeam = _context.Teams.FirstOrDefault(m => m.Id == user.TeamId);
+
+            foreach (var p in allPlayers)
+            {
+                p.PlayerPosition = _context.PlayerPositions.FirstOrDefault(m => m.Id == p.PlayerPositionId);
+            }
             var viewModel = new DashboardViewModels.MyTeamViewModel
             {
                 CurrentUser = user,
@@ -69,10 +74,124 @@ namespace Sabr.Controllers
             return View(viewModel);
         }
 
+        public ActionResult UndervaluedPlayers()
+        {
+            var currentUserName = User.Identity.GetUserName();
+            var user = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userTeam = _context.Teams.FirstOrDefault(m => m.Id == user.TeamId);
+            var allPlayers = _context.Players.ToList();
+            List<PlayerAndSabrScore> undervaluedPlayers = new List<PlayerAndSabrScore>();
+
+            foreach (var p in allPlayers)
+            {
+                if (p.TeamId != userTeam.Id)
+                {
+                    try
+                    {
+                        var name = p.FirstName + " " + p.LastName;
+                        var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(name));
+                        var sabrMetric = GetSabrMetric(playerStat, p.PlayerPositionId);
+                        var position = _context.PlayerPositions.FirstOrDefault(m => m.Id == p.PlayerPositionId);
+                        var minutes = decimal.Parse(playerStat.MinutesPlayed);
+                        if (sabrMetric >= 70 && minutes.CompareTo(20) <= 0)
+                        {
+                            var score = new PlayerAndSabrScore
+                            {
+                                PlayerName = name,
+                                SabrScore = sabrMetric,
+                                PositionId = p.PlayerPositionId,
+                                Position = position,
+                                TeamId = p.TeamId
+                            };
+                            undervaluedPlayers.Add(score);
+                        }
+                        
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+
+            var sortedPlayers = undervaluedPlayers.OrderByDescending(m => m.SabrScore);
+
+            var viewModel = new DashboardViewModels.UndervaluedViewModel
+            {
+               UndervaluedPlayersList = sortedPlayers
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult PowerRankings()
+        {
+            var allTeams = _context.Teams.ToList();
+            var allPlayers = _context.Players.ToList();
+            var teamScores = new List<TeamAndSabrScore>();
+
+            foreach (var t in allTeams)
+            {
+                if (t.Id != 31)
+                {
+                    var teamsPlayers = new List<Player>();
+                    int teamSabrScore = 0;
+                    foreach (var p in allPlayers)
+                    {
+                        try
+                        {
+                            if (p.TeamId == t.Id)
+                            {
+                                var name = p.FirstName + " " + p.LastName;
+                                var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(name));
+                                var sabrMetric = GetSabrMetric(playerStat, p.PlayerPositionId);
+
+                                teamsPlayers.Add(p);
+                                teamSabrScore += sabrMetric;
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+
+                    }
+                    var medianScore = 0;
+                    if (teamsPlayers.Count > 0)
+                    {
+                        medianScore = teamSabrScore / teamsPlayers.Count;
+                    }
+                    else
+                    {
+                        medianScore = 0;
+                    }
+
+                    var teamAndScore = new TeamAndSabrScore
+                    {
+                        Team = t,
+                        SabrScore = medianScore,
+                    };
+                    teamScores.Add(teamAndScore);
+                }
+
+            }
+
+            var sortedScores = teamScores.OrderByDescending(m => m.SabrScore);
+            var viewModel = new DashboardViewModels.PowerRankingsViewModel
+            {
+                TeamAndSabrScoresList = sortedScores
+            };
+
+            return View(viewModel);
+        }
         public ActionResult TeamBio(int id)
         {
             var team = _context.Teams.FirstOrDefault(m => m.Id == id);
             var players = _context.Players.ToList();
+            foreach (var p in players)
+            {
+                p.PlayerPosition = _context.PlayerPositions.FirstOrDefault(m => m.Id == p.PlayerPositionId);
+            }
             var viewModel = new DashboardViewModels.TeamBioViewModel
             {
                 Team = team,
@@ -156,6 +275,10 @@ namespace Sabr.Controllers
         {
             var team = _context.HistoricalTeams.FirstOrDefault(m => m.Id == id);
             var players = _context.HistoricalPlayers.ToList();
+            foreach (var p in players)
+            {
+                p.PlayerPosition = _context.PlayerPositions.FirstOrDefault(m => m.Id == p.PlayerPositionId);
+            }
             var viewModel = new DashboardViewModels.HistoricalBioViewModel
             {
                 HistoricalTeam = team,

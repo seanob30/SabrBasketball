@@ -1,7 +1,7 @@
 ﻿@model Sabr.ViewModels.DashboardViewModels.TeamBioViewModel
 @{
     ViewBag.Title = "TeamBio";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
 }
 
 <h2>@Model.Team.TeamName</h2>
@@ -22,7 +22,7 @@
             {
                 <tr>
                     <td>@Html.ActionLink((player.FirstName + " " + player.LastName), "PlayerBio", "Dashboard", new { name = (player.FirstName + " " + player.LastName), position = player.PlayerPositionId }, null)</td>
-                    <td>@player.PlayerPositionId</td>
+                    <td>@player.PlayerPosition.Position</td>
                     <td>@player.Age</td>
                     <td>@player.FootHeight'@player.InchHeight"</td>
                     <td>@player.Weight</td>

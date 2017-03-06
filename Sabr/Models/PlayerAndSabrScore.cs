@@ -10,6 +10,7 @@ namespace Sabr.Models
         public string PlayerName { get; set; }
         public int SabrScore { get; set; }
         public int PositionId { get; set; }
+        public PlayerPosition Position { get; set; }
         public int TeamId { get; set; }
     }
 }
