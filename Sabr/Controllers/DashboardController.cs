@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -145,6 +146,75 @@ namespace Sabr.Controllers
             {
                 HistoricalTeam = team,
                 HistoricalPlayersList = players
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult AnalyzeMyTeam()
+        {
+            List<Player> userPlayers = new List<Player>();
+            List<PlayerAndSabrScore> sabrScoresList = new List<PlayerAndSabrScore>();
+
+            var currentUserName = User.Identity.GetUserName();
+            var allPlayers = _context.Players.ToList();
+            var user = _context.Users.FirstOrDefault(m => m.UserName == currentUserName);
+            var userTeam = _context.Teams.FirstOrDefault(m => m.Id == user.TeamId);
+
+            foreach (var player in allPlayers)
+            {
+                if (player.TeamId == user.TeamId)
+                {
+                    userPlayers.Add(player);
+                }
+            }
+            
+            foreach (var player in userPlayers)
+            {
+                try
+                {
+                    var name = player.FirstName + " " + player.LastName;
+                    var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(name));
+                    var sabrMetric = GetSabrMetric(playerStat, player.PlayerPositionId);
+                    var score = new PlayerAndSabrScore
+                    {
+                        PlayerName = player.FirstName + " " + player.LastName,
+                        SabrScore = sabrMetric,
+                        PositionId = player.PlayerPositionId
+                    };
+
+                    sabrScoresList.Add(score);
+                }
+                catch
+                {
+                    
+                }
+            }
+            List<PlayerAndSabrScore> sortedSabrScores = sabrScoresList.OrderByDescending(m => m.SabrScore).ToList();
+            List<PlayerAndSabrScore> bottomFive = new List<PlayerAndSabrScore>();
+            bottomFive.Add(sortedSabrScores[sortedSabrScores.Count - 1]);
+            bottomFive.Add(sortedSabrScores[sortedSabrScores.Count - 2]);
+            bottomFive.Add(sortedSabrScores[sortedSabrScores.Count - 3]);
+            bottomFive.Add(sortedSabrScores[sortedSabrScores.Count - 4]);
+            bottomFive.Add(sortedSabrScores[sortedSabrScores.Count - 5]);
+            
+            var viewModel = new DashboardViewModels.AnalyzeMyTeamViewModel
+            {
+                CurrentUser = user,
+                Team = userTeam,
+                ListOfSabrScores = sabrScoresList,
+                BottomFiveSabrScores = bottomFive
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult FindReplacement(string name, int score, int position)
+        {
+            var viewModel = new DashboardViewModels.FindReplacementViewModel
+            {
+                Name = name,
+                Score = score,
+                Position = position
             };
             return View(viewModel);
         }

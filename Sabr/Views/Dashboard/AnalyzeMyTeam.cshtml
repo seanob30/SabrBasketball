@@ -1,0 +1,27 @@
+﻿@model Sabr.ViewModels.DashboardViewModels.AnalyzeMyTeamViewModel
+@{
+    ViewBag.Title = "AnalyzeMyTeam";
+    Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
+}
+
+<h2>The Bottom Five</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SabrMetric</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var score in Model.BottomFiveSabrScores)
+       {
+           <tr>
+               <td>@score.PlayerName</td>
+               <td>@score.SabrScore</td>
+               <td>@Html.ActionLink("Find Replacement", "FindReplacement", "Dashboard", new { name = score.PlayerName, score = score.SabrScore, position = score.PositionId }, null)</td>
+           </tr>
+       }
+    </tbody>
+</table>
+

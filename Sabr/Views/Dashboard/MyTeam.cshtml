@@ -4,31 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Team.TeamName</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Age</th>
-            <th>Height</th>
-            <th>Weight</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var player in Model.PlayersList)
-        {
-            if (player.TeamId == Model.CurrentUser.TeamId)
-            {
-                <tr>
-                    <td>@Html.ActionLink((player.FirstName + " " + player.LastName), "PlayerBio", "Dashboard", new { name = (player.FirstName + " " + player.LastName), position = player.PlayerPositionId }, null)</td>
-                    <td>@player.PlayerPositionId</td>
-                    <td>@player.Age</td>
-                    <td>@player.FootHeight'@player.InchHeight"</td>
-                    <td>@player.Weight</td>
-                </tr>
-            }
+<h1>@Model.Team.TeamName</h1>
+<br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>SPECIALIZATION</h1>
+                </div>
+                <div class="panel-footer">
+                    <button onclick="location.href='@Url.Action("MyTeam","Dashboard")'" class="btn btn-lg">SPECIALIZED POSITIONS</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>ANALYZATION</h1>
+                </div>
+                <div class="panel-footer">
+                    <button onclick="location.href='@Url.Action("AnalyzeMyTeam","Dashboard")'" class="btn btn-lg">ANALYZE MY TEAM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Roster</h3>
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Age</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in Model.PlayersList)
+                        {
+                            if (player.TeamId == Model.CurrentUser.TeamId)
+                            {
+                                <tr>
+                                    <td>@Html.ActionLink((player.FirstName + " " + player.LastName), "PlayerBio", "Dashboard", new { name = (player.FirstName + " " + player.LastName), position = player.PlayerPositionId }, null)</td>
+                                    <td>@player.PlayerPositionId</td>
+                                    <td>@player.Age</td>
+                                    <td>@player.FootHeight'@player.InchHeight"</td>
+                                    <td>@player.Weight</td>
+                                </tr>
+                            }
 
-        }
-    </tbody>
-</table>
+                        }
+                    </tbody>
+                </table>
+
+
+                    </div>
+
+<br>
+<br>
+

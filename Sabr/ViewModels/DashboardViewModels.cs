@@ -15,6 +15,16 @@ namespace Sabr.ViewModels
             public IEnumerable<Player> PlayersList { get; set; }    
         }
 
+        public class AnalyzeMyTeamViewModel
+        {
+            public ApplicationUser CurrentUser { get; set; }
+            public Team Team { get; set; }
+            public IEnumerable<PlayerAndSabrScore> ListOfSabrScores { get; set; }
+            public List<PlayerAndSabrScore> BottomFiveSabrScores { get; set; }
+
+
+        }
+
         public class HistoricalViewModel
         {
             public IEnumerable<HistoricalTeam> HistoricalTeamsList { get; set; }
@@ -55,6 +65,13 @@ namespace Sabr.ViewModels
             public decimal FTPercentage { get; set; }
             public int SabrMetric { get; set; }
 
+        }
+
+        public class FindReplacementViewModel
+        {
+            public string Name { get; set; }
+            public int Score { get; set; }
+            public int Position { get; set; }
         }
     }
 }
