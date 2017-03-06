@@ -87,3 +87,10 @@ C:\Users\seanob\Documents\GitHub\Sabr\Sabr\bin\CsvHelper.dll
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\bin\CsvHelper.xml
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.PopulateStatLineTable.resources
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ChangedPropDataOnStatLines.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.AddedHistoricalPlayerStatLine.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.SecondTry.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ThirdTry.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ChangedPropOnHStatsToString.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ReAdd.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.Repair.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.Fixed.resources

@@ -223,7 +223,36 @@
     <Compile Include="Migrations\201703050923179_ChangedPropDataOnStatLines.Designer.cs">
       <DependentUpon>201703050923179_ChangedPropDataOnStatLines.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703052101395_AddedHistoricalPlayerStatLine.cs" />
+    <Compile Include="Migrations\201703052101395_AddedHistoricalPlayerStatLine.Designer.cs">
+      <DependentUpon>201703052101395_AddedHistoricalPlayerStatLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052104148_SecondTry.cs" />
+    <Compile Include="Migrations\201703052104148_SecondTry.Designer.cs">
+      <DependentUpon>201703052104148_SecondTry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052108365_ThirdTry.cs" />
+    <Compile Include="Migrations\201703052108365_ThirdTry.Designer.cs">
+      <DependentUpon>201703052108365_ThirdTry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052337553_ChangedPropOnHStatsToString.cs" />
+    <Compile Include="Migrations\201703052337553_ChangedPropOnHStatsToString.Designer.cs">
+      <DependentUpon>201703052337553_ChangedPropOnHStatsToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052352398_ReAdd.cs" />
+    <Compile Include="Migrations\201703052352398_ReAdd.Designer.cs">
+      <DependentUpon>201703052352398_ReAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052356272_Repair.cs" />
+    <Compile Include="Migrations\201703052356272_Repair.Designer.cs">
+      <DependentUpon>201703052356272_Repair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052357235_Fixed.cs" />
+    <Compile Include="Migrations\201703052357235_Fixed.Designer.cs">
+      <DependentUpon>201703052357235_Fixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\HistoricalPerGameStatLine.cs" />
     <Compile Include="Models\HistoricalPlayer.cs" />
     <Compile Include="Models\HistoricalTeam.cs" />
     <Compile Include="Models\PerGameStatLine.cs" />
@@ -311,6 +340,8 @@
     <Content Include="Views\Dashboard\PlayerBio.cshtml" />
     <Content Include="Views\Shared\_LayoutPlayerBio.cshtml" />
     <Content Include="Views\Shared\_NavbarPlayerBio.cshtml" />
+    <Content Include="Views\Upload\HistoricalUpload.cshtml" />
+    <Content Include="Views\Dashboard\HistoricalPlayerBio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +366,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703050923179_ChangedPropDataOnStatLines.resx">
       <DependentUpon>201703050923179_ChangedPropDataOnStatLines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052101395_AddedHistoricalPlayerStatLine.resx">
+      <DependentUpon>201703052101395_AddedHistoricalPlayerStatLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052104148_SecondTry.resx">
+      <DependentUpon>201703052104148_SecondTry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052108365_ThirdTry.resx">
+      <DependentUpon>201703052108365_ThirdTry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052337553_ChangedPropOnHStatsToString.resx">
+      <DependentUpon>201703052337553_ChangedPropOnHStatsToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052352398_ReAdd.resx">
+      <DependentUpon>201703052352398_ReAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052356272_Repair.resx">
+      <DependentUpon>201703052356272_Repair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052357235_Fixed.resx">
+      <DependentUpon>201703052357235_Fixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

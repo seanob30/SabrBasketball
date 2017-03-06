@@ -6,14 +6,22 @@
 
 <h2>Upload</h2>
 
-@using (Html.BeginForm("Index", "Upload", FormMethod.Post, new {enctype = "multipart/form-data"}))
-{
-    @Html.AntiForgeryToken()
-    ;
-    @Html.ValidationSummary()
-    ;
 
-    <label class="text-info">Upload Excel File</label>
-    <input type="file" class="form-control" name="uploadfile" id="uploadfile"/>
-    <input type="submit" value="submit" class="btn btn-default"/>
-}
+    <section id="uploadForm">
+        @using (Html.BeginForm("Index", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            ;
+            @Html.ValidationSummary()
+            ;
+
+            <label class="text-info">Upload CSV File</label><br/>
+            <input type="file" class="form-control" name="uploadfile" id="uploadfile" /><br/>
+            <input type="submit" value="Submit" class="btn btn-success" />
+        }
+
+    </section>
+<br/><br/>
+    <p>
+        <button onclick="location.href='@Url.Action("HistoricalUpload","Upload")'" class="btn btn-warning">Historical Upload?</button>
+    </p>

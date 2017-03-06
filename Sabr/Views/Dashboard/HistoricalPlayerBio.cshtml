@@ -1,0 +1,17 @@
+﻿@model Sabr.ViewModels.DashboardViewModels.HistoricalPlayerBioViewModel
+@{
+    ViewBag.Title = "HistoricalPlayerBio";
+    Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
+}
+
+<h2>@Model.PlayerStats.Player.Split('\\')[0]</h2>
+<li>@Model.PlayerStats.Points ppg</li>
+<li>@Model.PlayerStats.Assists apg</li>
+<li>@Model.PlayerStats.TotalRebounds rpg</li>
+<li>@Model.PlayerStats.Steals spg</li>
+<li>@Model.PlayerStats.Blocks bpg</li>
+<li>@Model.FGPercentage fg%</li>
+<li>@Model.ThreePercentage 3p%</li>
+<li>@Model.FTPercentage ft%</li>
+<li>@Model.PlayerStats.Turnovers tpg</li>
+

@@ -95,6 +95,33 @@ namespace Sabr.Controllers
             viewModel.FTPercentage = Decimal.Round(viewModel.FTPercentage, 1);
             return View(viewModel);
         }
+
+        public ActionResult HistoricalPlayerBio(string name, int season)
+        {
+            var allStats = _context.HistoricalPerGameStatLines.ToList();
+            var allYears = new List<HistoricalPerGameStatLine>();
+
+            foreach (var stat in allStats)
+            {
+                if (stat.Player.Contains(name))
+                {
+                    allYears.Add(stat);
+                }
+            }
+
+            var playerStat = allYears.FirstOrDefault(m => m.SeasonId == season);
+            var viewModel = new DashboardViewModels.HistoricalPlayerBioViewModel
+            {
+                PlayerStats = playerStat,
+                FGPercentage = decimal.Parse(playerStat.FieldGoalPercentage) * 100,
+                ThreePercentage = decimal.Parse(playerStat.ThreePointPercentage) * 100,
+                FTPercentage = decimal.Parse(playerStat.FreeThrowPercentage) * 100
+            };
+            viewModel.FGPercentage = Decimal.Round(viewModel.FGPercentage, 1);
+            viewModel.ThreePercentage = Decimal.Round(viewModel.ThreePercentage, 1);
+            viewModel.FTPercentage = Decimal.Round(viewModel.FTPercentage, 1);
+            return View(viewModel);
+        }
         public ActionResult Historical()
         {
             var teams = _context.HistoricalTeams.ToList();

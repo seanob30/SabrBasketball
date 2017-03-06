@@ -1,0 +1,31 @@
+﻿@model Sabr.ViewModels.UploadViewModels.HistoricalUploadViewModel
+@{
+    ViewBag.Title = "HistoricalUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historical Upload</h2>
+
+<section id="uploadForm">
+    @using (Html.BeginForm("HistoricalUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        ;
+        @Html.ValidationSummary()
+        ;
+
+        <label class="text-info">Upload CSV File</label><br />
+        <input type="file" class="form-control" name="uploadfile" id="uploadfile" /><br />
+        <div class="form-group">
+            
+                @Html.DropDownListFor(m => m.SeasonId, new SelectList(Model.SeasonsList, "Id", "Year"), "Season?", new { @class = "form-control" })
+            
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success" />
+    }
+
+</section>
+<br /><br />
+<p>
+    <button onclick="location.href='@Url.Action("Index","Upload")'" class="btn btn-warning">Regular Season Upload?</button>
+</p>

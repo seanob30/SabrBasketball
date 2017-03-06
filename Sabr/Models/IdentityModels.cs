@@ -31,7 +31,9 @@ namespace Sabr.Models
         public DbSet<HistoricalPlayer> HistoricalPlayers { get; set; }
         public DbSet<HistoricalTeam> HistoricalTeams { get; set; }
         public DbSet<Season> Seasons { get; set; }
-        public DbSet<PerGameStatLine> PerGameStatLines { get; set; }    
+        public DbSet<PerGameStatLine> PerGameStatLines { get; set; }
+        public DbSet<HistoricalPerGameStatLine> HistoricalPerGameStatLines { get; set; }
+        
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

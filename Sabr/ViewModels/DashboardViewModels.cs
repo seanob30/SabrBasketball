@@ -45,5 +45,14 @@ namespace Sabr.ViewModels
             public decimal FTPercentage { get; set; }    
 
         }
+
+        public class HistoricalPlayerBioViewModel
+        {
+            public HistoricalPerGameStatLine PlayerStats { get; set; }
+            public decimal FGPercentage { get; set; }
+            public decimal ThreePercentage { get; set; }
+            public decimal FTPercentage { get; set; }
+
+        }
     }
 }
