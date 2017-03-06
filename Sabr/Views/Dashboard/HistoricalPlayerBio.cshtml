@@ -10,8 +10,8 @@
 <li>@Model.PlayerStats.TotalRebounds rpg</li>
 <li>@Model.PlayerStats.Steals spg</li>
 <li>@Model.PlayerStats.Blocks bpg</li>
-<li>@Model.FGPercentage fg%</li>
-<li>@Model.ThreePercentage 3p%</li>
-<li>@Model.FTPercentage ft%</li>
+<li>@decimal.Round((decimal.Parse(Model.PlayerStats.FieldGoalPercentage) * 100), 1) fg%</li>
+<li>@decimal.Round((decimal.Parse(Model.PlayerStats.ThreePointPercentage) * 100), 1) 3p%</li>
+<li>@decimal.Round((decimal.Parse(Model.PlayerStats.FreeThrowPercentage) * 100), 1) ft%</li>
 <li>@Model.PlayerStats.Turnovers tpg</li>
 

@@ -85,17 +85,24 @@ namespace Sabr.Controllers
         {
             var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(name));
             var sabrMetric = GetSabrMetric(playerStat, position);
+            if (playerStat.FieldGoalPercentage == "")
+            {
+                playerStat.FieldGoalPercentage = "0.0";
+            }
+            if (playerStat.ThreePointPercentage == "")
+            {
+                playerStat.ThreePointPercentage = "0.0";
+            }
+            if (playerStat.FreeThrowPercentage == "")
+            {
+                playerStat.FreeThrowPercentage = "0.0";
+            }
+
             var viewModel = new DashboardViewModels.PlayerBioViewModel
             {
                 PlayerStats = playerStat,
-                FGPercentage = decimal.Parse(playerStat.FieldGoalPercentage) * 100,
-                ThreePercentage = decimal.Parse(playerStat.ThreePointPercentage) * 100,
-                FTPercentage = decimal.Parse(playerStat.FreeThrowPercentage) * 100,
                 SabrMetric = sabrMetric
             };
-            viewModel.FGPercentage = Decimal.Round(viewModel.FGPercentage, 1);
-            viewModel.ThreePercentage = Decimal.Round(viewModel.ThreePercentage, 1);
-            viewModel.FTPercentage = Decimal.Round(viewModel.FTPercentage, 1);
             return View(viewModel);
         }
 
@@ -114,17 +121,24 @@ namespace Sabr.Controllers
 
             var playerStat = allYears.FirstOrDefault(m => m.SeasonId == season);
             var sabrMetric = GetHistoricalSabrMetric(playerStat, position);
+            if (playerStat.FieldGoalPercentage == "")
+            {
+                playerStat.FieldGoalPercentage = "0.0";
+            }
+            if (playerStat.ThreePointPercentage == "")
+            {
+                playerStat.ThreePointPercentage = "0.0";
+            }
+            if (playerStat.FreeThrowPercentage == "")
+            {
+                playerStat.FreeThrowPercentage = "0.0";
+            }
+
             var viewModel = new DashboardViewModels.HistoricalPlayerBioViewModel
             {
                 PlayerStats = playerStat,
-                FGPercentage = decimal.Parse(playerStat.FieldGoalPercentage) * 100,
-                ThreePercentage = decimal.Parse(playerStat.ThreePointPercentage) * 100,
-                FTPercentage = decimal.Parse(playerStat.FreeThrowPercentage) * 100,
                 SabrMetric = sabrMetric
             };
-            viewModel.FGPercentage = Decimal.Round(viewModel.FGPercentage, 1);
-            viewModel.ThreePercentage = Decimal.Round(viewModel.ThreePercentage, 1);
-            viewModel.FTPercentage = Decimal.Round(viewModel.FTPercentage, 1);
             return View(viewModel);
         }
         public ActionResult Historical()
@@ -177,9 +191,10 @@ namespace Sabr.Controllers
                     var sabrMetric = GetSabrMetric(playerStat, player.PlayerPositionId);
                     var score = new PlayerAndSabrScore
                     {
-                        PlayerName = player.FirstName + " " + player.LastName,
+                        PlayerName = name,
                         SabrScore = sabrMetric,
-                        PositionId = player.PlayerPositionId
+                        PositionId = player.PlayerPositionId,
+                        TeamId = player.TeamId
                     };
 
                     sabrScoresList.Add(score);
@@ -208,13 +223,46 @@ namespace Sabr.Controllers
             return View(viewModel);
         }
 
-        public ActionResult FindReplacement(string name, int score, int position)
+        public ActionResult FindReplacement(string name, int score, int position, int team)
         {
+            var allPlayers = _context.Players.ToList();
+            List<PlayerAndSabrScore> replacements = new List<PlayerAndSabrScore>();
+
+            foreach (var player in allPlayers)
+            {
+                if (player.PlayerPositionId == position && player.TeamId != team)
+                {
+                    try
+                    {
+                        var replacementName = player.FirstName + " " + player.LastName;
+                        var playerStat = _context.PerGameStatLines.FirstOrDefault(m => m.Player.Contains(replacementName));
+                        var sabrMetric = GetSabrMetric(playerStat, player.PlayerPositionId);
+                        if (sabrMetric > score)
+                        {
+                            var replacement = new PlayerAndSabrScore
+                            {
+                                PlayerName = replacementName,
+                                SabrScore = sabrMetric,
+                                PositionId = player.PlayerPositionId,
+                                TeamId = player.TeamId
+                            };
+
+                            replacements.Add(replacement);
+                        }
+                        
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+
+            List<PlayerAndSabrScore> sortedSabrScores = replacements.OrderByDescending(m => m.SabrScore).ToList();
+
             var viewModel = new DashboardViewModels.FindReplacementViewModel
             {
-                Name = name,
-                Score = score,
-                Position = position
+                ReplacementsList = sortedSabrScores
             };
             return View(viewModel);
         }
@@ -446,7 +494,7 @@ namespace Sabr.Controllers
                 }
                 else if (position == 3)
                 {
-                    int sabrMetric = 60;
+                    int sabrMetric = 65;
 
                     //POINTS
                     if (decimal.Parse(stat.Points) > 30)
@@ -1169,7 +1217,7 @@ namespace Sabr.Controllers
                 }
                 else if (position == 3)
                 {
-                    int sabrMetric = 60;
+                    int sabrMetric = 65;
 
                     //POINTS
                     if (decimal.Parse(stat.Points) > 30)

@@ -19,7 +19,7 @@
            <tr>
                <td>@score.PlayerName</td>
                <td>@score.SabrScore</td>
-               <td>@Html.ActionLink("Find Replacement", "FindReplacement", "Dashboard", new { name = score.PlayerName, score = score.SabrScore, position = score.PositionId }, null)</td>
+               <td>@Html.ActionLink("Find Replacement", "FindReplacement", "Dashboard", new { name = score.PlayerName, score = score.SabrScore, position = score.PositionId, team = score.TeamId }, null)</td>
            </tr>
        }
     </tbody>

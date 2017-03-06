@@ -50,9 +50,6 @@ namespace Sabr.ViewModels
         public class PlayerBioViewModel
         {
             public PerGameStatLine PlayerStats { get; set; }
-            public decimal FGPercentage { get; set; }    
-            public decimal ThreePercentage { get; set; }    
-            public decimal FTPercentage { get; set; }
             public int SabrMetric { get; set; }   
 
         }
@@ -60,18 +57,13 @@ namespace Sabr.ViewModels
         public class HistoricalPlayerBioViewModel
         {
             public HistoricalPerGameStatLine PlayerStats { get; set; }
-            public decimal FGPercentage { get; set; }
-            public decimal ThreePercentage { get; set; }
-            public decimal FTPercentage { get; set; }
             public int SabrMetric { get; set; }
 
         }
 
         public class FindReplacementViewModel
         {
-            public string Name { get; set; }
-            public int Score { get; set; }
-            public int Position { get; set; }
+            public IEnumerable<PlayerAndSabrScore> ReplacementsList { get; set; }
         }
     }
 }

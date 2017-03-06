@@ -4,8 +4,25 @@
     Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
 }
 
-<h2>FindReplacement</h2>
+<h2>Replacements</h2>
 
-<li>@Model.Name</li>
-<li>@Model.Score</li>
-<li>@Model.Position</li>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SabrMetric</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.ReplacementsList)
+        {
+                <tr>
+                    <td>@Html.ActionLink(player.PlayerName, "PlayerBio", "Dashboard", new { name = player.PlayerName, position = player.PositionId}, null)</td>
+                    <td>@player.SabrScore</td>
+                </tr>
+            
+
+        }
+    </tbody>
+</table>
+
