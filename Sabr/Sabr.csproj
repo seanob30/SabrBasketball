@@ -348,6 +348,7 @@
     <Content Include="Views\Dashboard\FindReplacement.cshtml" />
     <Content Include="Views\Dashboard\UndervaluedPlayers.cshtml" />
     <Content Include="Views\Dashboard\PowerRankings.cshtml" />
+    <Content Include="Views\Dashboard\SpecializedPositions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

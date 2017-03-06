@@ -287,6 +287,10 @@ namespace Sabr.Controllers
             return View(viewModel);
         }
 
+        public ActionResult SpecializedPositions()
+        {
+            return View();
+        }
         public ActionResult AnalyzeMyTeam()
         {
             List<Player> userPlayers = new List<Player>();
