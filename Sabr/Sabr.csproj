@@ -207,6 +207,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperFunctions\GetSabrMetrics.cs" />
+    <Compile Include="HelperFunctions\GetSpecializedPosition.cs" />
     <Compile Include="Migrations\201703022128255_InitialMigration.cs" />
     <Compile Include="Migrations\201703022128255_InitialMigration.Designer.cs">
       <DependentUpon>201703022128255_InitialMigration.cs</DependentUpon>
@@ -257,6 +259,7 @@
     <Compile Include="Models\HistoricalTeam.cs" />
     <Compile Include="Models\PerGameStatLine.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerAndSpecializedPosition.cs" />
     <Compile Include="Models\PlayerAndSabrScore.cs" />
     <Compile Include="Models\PlayerPosition.cs" />
     <Compile Include="Models\Season.cs" />

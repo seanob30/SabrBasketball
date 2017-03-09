@@ -75,5 +75,10 @@ namespace Sabr.ViewModels
         {
             public IEnumerable<TeamAndSabrScore> TeamAndSabrScoresList { get; set; }
         }
+
+        public class SpecializedPositionsViewModel
+        {
+            public IEnumerable<PlayerAndSpecializedPosition> PlayerAndSpecializedPositionsList { get; set; }
+        }
     }
 }

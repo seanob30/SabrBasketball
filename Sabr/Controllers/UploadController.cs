@@ -75,9 +75,45 @@ namespace Sabr.Controllers
                     }
                     foreach (var statLine in temp)
                     {
-                        _context.PerGameStatLines.Add(statLine);
-                        _context.SaveChanges();
+                        if (_context.PerGameStatLines.Find(statLine.Player) != null)
+                        {
+                            var statInDB = _context.PerGameStatLines.FirstOrDefault(m => m.Player == statLine.Player);
+
+                            statInDB.GamesPlayed = statLine.GamesPlayed;
+                            statInDB.GamesStarted = statLine.GamesStarted;
+                            statInDB.MinutesPlayed = statLine.MinutesPlayed;
+                            statInDB.FieldGoalsMade = statLine.FieldGoalsMade;
+                            statInDB.FieldGoalsAttemped = statLine.FieldGoalsAttemped;
+                            statInDB.FieldGoalPercentage = statLine.FieldGoalPercentage;
+                            statInDB.ThreePointersMade = statLine.ThreePointersMade;
+                            statInDB.ThreePointersAttempted = statLine.ThreePointersAttempted;
+                            statInDB.ThreePointPercentage = statLine.ThreePointPercentage;
+                            statInDB.TwoPointersMade = statLine.TwoPointersMade;
+                            statInDB.TwoPointersAttempted = statLine.TwoPointersAttempted;
+                            statInDB.TwoPointPercentage = statLine.TwoPointPercentage;
+                            statInDB.EffectiveFieldGoalPercentage = statLine.EffectiveFieldGoalPercentage;
+                            statInDB.FreeThrowsMade = statLine.FreeThrowsMade;
+                            statInDB.FreeThrowsAttempted = statLine.FreeThrowsAttempted;
+                            statInDB.FreeThrowPercentage = statLine.FreeThrowPercentage;
+                            statInDB.OffensiveRebounds = statLine.OffensiveRebounds;
+                            statInDB.DefensiveRebounds = statLine.DefensiveRebounds;
+                            statInDB.TotalRebounds = statLine.TotalRebounds;
+                            statInDB.Assists = statLine.Assists;
+                            statInDB.Steals = statLine.Steals;
+                            statInDB.Blocks = statLine.Blocks;
+                            statInDB.Turnovers = statLine.Turnovers;
+                            statInDB.PersonalFouls = statLine.PersonalFouls;
+                            statInDB.Points = statLine.Points;
+                            _context.SaveChanges();
+                        }
+                        else
+                        {
+                            _context.PerGameStatLines.Add(statLine);
+                            _context.SaveChanges();
+                        }
+                        
                     }
+                    
                     return View("Success");
                 }
             }

@@ -1,8 +1,26 @@
-﻿
+﻿@model Sabr.ViewModels.DashboardViewModels.SpecializedPositionsViewModel
 @{
     ViewBag.Title = "SpecializedPositions";
     Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
 }
 
 <h2>Specialized Positions</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.PlayerAndSpecializedPositionsList)
+        {
+            <tr>
+                <td>@Html.ActionLink((p.Player.FirstName + " " + p.Player.LastName), "PlayerBio", "Dashboard", new { name = (p.Player.FirstName + " " + p.Player.LastName), position = p.Player.PlayerPositionId }, null)</td>
+                <td>@p.SpecializedPosition</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
