@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -143,10 +144,16 @@ namespace Sabr.Controllers
         public ActionResult Register()
         {
             var teams = _context.Teams.ToList();
+            var teamsTrimmed = new List<Team>();
+
+            for (var i = 0; i < 30; i++)
+            {
+                teamsTrimmed.Add(teams[i]);
+            }
 
             var viewModel = new RegisterViewModel()
             {
-                TeamsList = teams
+                TeamsList = teamsTrimmed
             };
 
             return View(viewModel);
