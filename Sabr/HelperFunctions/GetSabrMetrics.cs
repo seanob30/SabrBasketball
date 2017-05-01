@@ -230,8 +230,15 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
+                    
                 }
                 else if (position == 3)
                 {
@@ -468,8 +475,14 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
                 }
                 else if (position == 4 || position == 5)
                 {
@@ -716,8 +729,14 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
                 }
                 else
                 {
@@ -953,8 +972,14 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
                 }
                 else if (position == 3)
                 {
@@ -1191,8 +1216,14 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
                 }
                 else if (position == 4 || position == 5)
                 {
@@ -1439,8 +1470,14 @@ namespace Sabr.HelperFunctions
                     {
                         sabrMetric += 0;
                     }
-
-                    return sabrMetric;
+                    if (sabrMetric > 100)
+                    {
+                        return 100;
+                    }
+                    else
+                    {
+                        return sabrMetric;
+                    }
                 }
                 else
                 {
