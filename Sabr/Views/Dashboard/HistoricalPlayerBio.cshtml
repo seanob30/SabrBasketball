@@ -4,14 +4,59 @@
     Layout = "~/Views/Shared/_LayoutPlayerBio.cshtml";
 }
 
-<h2>@Model.PlayerStats.Player.Split('\\')[0] @Model.SabrMetric</h2>
-<li>@Model.PlayerStats.Points ppg</li>
-<li>@Model.PlayerStats.Assists apg</li>
-<li>@Model.PlayerStats.TotalRebounds rpg</li>
-<li>@Model.PlayerStats.Steals spg</li>
-<li>@Model.PlayerStats.Blocks bpg</li>
-<li>@decimal.Round((decimal.Parse(Model.PlayerStats.FieldGoalPercentage) * 100), 1) fg%</li>
-<li>@decimal.Round((decimal.Parse(Model.PlayerStats.ThreePointPercentage) * 100), 1) 3p%</li>
-<li>@decimal.Round((decimal.Parse(Model.PlayerStats.FreeThrowPercentage) * 100), 1) ft%</li>
-<li>@Model.PlayerStats.Turnovers tpg</li>
+<h2>@Model.PlayerStats.Player.Split('\\')[0]</h2>
+<h4>SaberMetric: @Model.SabrMetric</h4>
+
+<div class="row">
+    <div class="col-md-3">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Per Game Statistic</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Points</td>
+                <td>@Model.PlayerStats.Points</td>
+            </tr>
+            <tr>
+                <td>Rebounds</td>
+                <td>@Model.PlayerStats.TotalRebounds</td>
+            </tr>
+            <tr>
+                <td>Assists</td>
+                <td>@Model.PlayerStats.Assists</td>
+            </tr>
+            <tr>
+                <td>Steals</td>
+                <td>@Model.PlayerStats.Steals</td>
+            </tr>
+            <tr>
+                <td>Blocks</td>
+                <td>@Model.PlayerStats.Blocks</td>
+            </tr>
+            <tr>
+                <td>Turnovers</td>
+                <td>@Model.PlayerStats.Turnovers</td>
+            </tr>
+            <tr>
+                <td>Field Goal</td>
+                <td>@decimal.Round((decimal.Parse(Model.PlayerStats.FieldGoalPercentage) * 100), 1) %</td>
+            </tr>
+            <tr>
+                <td>Three Point</td>
+                <td>@decimal.Round((decimal.Parse(Model.PlayerStats.ThreePointPercentage) * 100), 1) %</td>
+            </tr>
+            <tr>
+                <td>Free Throw</td>
+                <td>@decimal.Round((decimal.Parse(Model.PlayerStats.FreeThrowPercentage) * 100), 1) %</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+</div>
+
 

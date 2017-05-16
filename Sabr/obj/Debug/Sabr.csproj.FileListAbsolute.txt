@@ -94,3 +94,4 @@ C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ChangedProp
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.ReAdd.resources
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.Repair.resources
 C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.Fixed.resources
+C:\Users\seanob\Documents\GitHub\Sabr\Sabr\obj\Debug\Sabr.Migrations.UpdatedSeedInfo515.resources
